@@ -1,18 +1,15 @@
-import React from 'react';
+import React from "react";
 
-const TextArea = () => {
+export function TextArea() {
   return (
-    <label class="block">
-      <span class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
-        Email
-      </span>
-      <input
-        type="email"
-        name="email"
-        class="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"
-        placeholder="you@example.com"
+    <div className="flex flex-col items-start">
+      <label className="mb-1 text-sm text-gray-600">Description</label>
+      <textarea
+        name="message"
+        className="w-96 h-40 p-4 rounded-md mx-4 my-1 border border-1 border-neutral-200 placeholder-neutral-500 focus:outline-none text-sm focus:ring-1 invalid:border-red-50 text-left text-neutral-500 bg-neutral-50 resize-none"
+        placeholder="Write your message..."
+        maxLength="500"
       />
-    </label>
+    </div>
   );
-};
-export default TextArea;
+}

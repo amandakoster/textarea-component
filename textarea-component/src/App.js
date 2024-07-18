@@ -1,6 +1,6 @@
-import logo from './logo.svg';
-import './App.css';
-import TextArea from './TextArea.jsx';
+import logo from "./logo.svg";
+import "./App.css";
+import { TextArea } from "./TextArea";
 
 function App() {
   return (
@@ -10,6 +10,9 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
+        <h1 className="text-3xl font-bold underline">
+          A textarea-component for React
+        </h1>
         <TextArea />
       </header>
     </div>
