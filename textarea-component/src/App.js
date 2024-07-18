@@ -1,20 +1,13 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { TextArea } from "./TextArea";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <h1 className="text-3xl font-bold underline">
-          A textarea-component for React
-        </h1>
-        <TextArea />
-      </header>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+      <h1 className="text-red-500 text-3xl font-bold mb-20">
+        A textarea-component for React
+      </h1>
+      <TextArea />
     </div>
   );
 }
