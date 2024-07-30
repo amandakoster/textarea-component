@@ -10,6 +10,7 @@ function App() {
       <TextArea label="Normal" />
       <TextArea label="With label" />
       <TextArea label="With label and error" />
+      <TextArea label="Disabled" disabled />
     </div>
   );
 }

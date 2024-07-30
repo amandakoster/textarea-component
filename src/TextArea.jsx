@@ -1,41 +1,35 @@
 import React, { useState } from "react";
 
-import "./App.css";
-
-export function TextArea({ label }) {
+export function TextArea({ label, disabled }) {
   const [text, setText] = useState("");
-
-  // Example dynamic class variable
-
-  // const errorBorder = "border-red-500";
-  // const normalBorder = "border-neutral-200";
-  // const focusBorder = "focus:border-blue-500";
 
   const borderClassNames =
     text.length > 500
       ? "border-red-600"
-      : "border-neutral-900 focus:border-indigo-700 custom-focus-border";
+      : "border-2 border-neutral-100 focus:border-indigo-700";
 
   const textColorClass =
     text.length < 500
       ? "font-normal text-sm text-neutral-900"
       : "font-normal text-sm text-red-600";
 
-  // const textAlignClass = text.length < 500 ? "justify-end" : "justify-start";
+  const disabledPlaceholderClass = disabled
+    ? "placeholder:text-neutral-300"
+    : "";
 
   return (
     <div className="h-[180px] w-[465px] flex flex-col gap-1.5">
       <div className="flex flex-col gap-1.5 self-stretch grow">
         {label && (
-          <label className="mb-1 font-medium text-sm text-neutral-700">
-            {label}
-          </label>
+          <label className="mb-1 font-medium text-neutral-700">{label}</label>
         )}
         <textarea
           name="message"
-          className={`flex gap-2 self-stretch grow bg-neutral-50 px-3.5 py-3 rounded-lg resize-none border ${borderClassNames} focus:ring focus:ring-indigo-700 focus:outline-none`}
-          placeholder="Write your message..."
+          disabled={disabled}
+          minLength="1"
           maxLength="500"
+          className={`flex gap-2 self-stretch grow bg-neutral-50 px-3.5 py-3 rounded-lg resize-none ${borderClassNames} ${disabledPlaceholderClass} focus:outline-none`}
+          placeholder={disabled ? "Disabled" : "Write your message..."}
           value={text}
           onChange={(e) => setText(e.target.value)}
         />

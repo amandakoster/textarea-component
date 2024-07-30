@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+/* .custom-focus-border:focus {
+  border-width: 2px;
+} */
+
 .App {
   text-align: center;
 }
@@ -39,8 +43,4 @@
   to {
     transform: rotate(360deg);
   }
-}
-
-.custom-focus-border:focus {
-  border-width: 1px;
 }
