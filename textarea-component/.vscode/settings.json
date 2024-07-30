@@ -1,8 +1,0 @@
-{
-  "editor.formatOnSave": true,
-  "notebook.formatOnSave.enabled": true,
-  "editor.wordWrap": "on",
-  "files.autoSaveWhenNoErrors": true,
-  "interactiveWindow.promptToSaveOnClose": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
-}
