@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-export function TextArea({ label, disabled }) {
+export function TextArea({ label, disabled, focused: propFocused }) {
   const [text, setText] = useState("");
+  const [focused, setFocused] = useState(propFocused || false);
+
+  useEffect(() => {
+    setFocused(propFocused);
+  }, [propFocused]);
 
   const borderClassNames =
     text.length > 500
       ? "border-red-600"
-      : "border-2 border-neutral-100 focus:border-indigo-700";
+      : `border-2 border-neutral-100 ${focused && "border-indigo-700"}`;
 
   const textColorClass =
     text.length < 500
@@ -32,6 +37,8 @@ export function TextArea({ label, disabled }) {
           placeholder={disabled ? "Disabled" : "Write your message..."}
           value={text}
           onChange={(e) => setText(e.target.value)}
+          onFocus={() => setFocused(true)}
+          onBlur={() => setFocused(false)}
         />
 
         <div className="w-full flex justify-between mt-1">
