@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
 
-export function TextArea({ label, disabled, focused: propFocused }) {
-  const [text, setText] = useState("");
+export function TextArea({
+  label,
+  disabled,
+  focused: propFocused,
+  errorMessage,
+  initialText,
+}) {
+  const [text, setText] = useState(initialText || "");
   const [focused, setFocused] = useState(propFocused || false);
 
   useEffect(() => {
@@ -9,12 +15,12 @@ export function TextArea({ label, disabled, focused: propFocused }) {
   }, [propFocused]);
 
   const borderClassNames =
-    text.length > 500
+    text.length > 500 || errorMessage
       ? "border-red-600"
       : `border-2 border-neutral-100 ${focused && "border-indigo-700"}`;
 
   const textColorClass =
-    text.length < 500
+    text.length < 500 && !errorMessage
       ? "font-normal text-sm text-neutral-900"
       : "font-normal text-sm text-red-600";
 
@@ -23,8 +29,8 @@ export function TextArea({ label, disabled, focused: propFocused }) {
     : "";
 
   return (
-    <div className="h-[180px] w-[465px] flex flex-col gap-1.5">
-      <div className="flex flex-col gap-1.5 self-stretch grow">
+    <div className="h-[180px] w-[465px] flex flex-col gap-2 my-2">
+      <div className="flex flex-col gap-2 self-stretch grow">
         {label && (
           <label className="mb-1 font-medium text-neutral-700">{label}</label>
         )}
@@ -42,14 +48,12 @@ export function TextArea({ label, disabled, focused: propFocused }) {
         />
 
         <div className="w-full flex justify-between mt-1">
-          {text.length >= 500 ? (
-            <span className={`text-sm ${textColorClass}`}>
-              Maximum characters are 500
-            </span>
-          ) : (
+          {text.length >= 500 && !errorMessage ? (
             <span className={`text-sm ${textColorClass} ml-auto`}>
               {text.length}/500
             </span>
+          ) : (
+            <span className={`text-sm ${textColorClass}`}>{errorMessage}</span>
           )}
         </div>
       </div>
