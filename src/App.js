@@ -15,11 +15,11 @@ function App() {
       <TextArea label="Focused (manually set)" focused />
       <TextArea label="Disabled" disabled className="mb-2" />
       <TextArea
-        label="With label and default character limit error message"
+        label="With label and default character limit error message (manually set)"
         initialText={maxText}
       />
       <TextArea
-        label="With label and custom error message"
+        label="With label and custom error message (manually set)"
         errorMessage="This is an error message"
         initialText={maxText}
       />
