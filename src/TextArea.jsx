@@ -42,7 +42,7 @@ export function TextArea({
           name="message"
           disabled={disabled}
           minLength="1"
-          className={`h-[108px] w-[475px] text-sm flex gap-2 bg-neutral-50 px-3.5 py-3 rounded-lg resize-none overflow-hidden ${borderClassNames} ${disabledPlaceholderClass} focus:outline-none`}
+          className={`h-[108px] w-[475px] text-sm flex gap-2 bg-neutral-50 p-2 rounded-lg resize-none overflow-hidden ${borderClassNames} ${disabledPlaceholderClass} focus:outline-none`}
           placeholder={disabled ? "Disabled" : "Write your message..."}
           value={text}
           onChange={(e) => setText(e.target.value)}
