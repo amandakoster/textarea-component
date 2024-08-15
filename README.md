@@ -1,70 +1,100 @@
-# Getting Started with Create React App
+markdown
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Copy code
 
-## Available Scripts
+`# TextArea Component
 
-In the project directory, you can run:
+The `TextArea` component is a customizable, controlled text area input field built using React. It includes features such as character count, error handling, focus management, and support for disabling the input.
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Controlled Input**: The component manages the text input state internally, with support for an initial text value.
+- **Character Count**: Displays a character count that changes color when the maximum limit of 500 characters is reached.
+- **Error Handling**: Shows an error message if provided, or a default message if the character limit is exceeded.
+- **Focus Management**: Handles focus states, allowing for custom border styles when the input is focused.
+- **Disabled State**: The text area can be disabled, which alters its appearance and placeholder text.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Installation
 
-### `npm test`
+1. **Clone the repository:**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   ```bash
+   git clone https://github.com/yourusername/text-area-component.git
+   cd text-area-component `
 
-### `npm run build`
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Install dependencies:**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   bash
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   Copy code
 
-### `npm run eject`
+   `npm install`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Usage
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To use the `TextArea` component in your project, import it and include it in your JSX:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+jsx
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Copy code
 
-## Learn More
+```import React from "react";
+import TextArea from "./TextArea";
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+function App() {
+return (
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<div className="App">
+<TextArea
+        label="Your Message"
+        initialText=""
+        disabled={false}
+        focused={false}
+        errorMessage=""
+      />
+</div>
+);
+}
 
-### Code Splitting
+export default App;
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Props
 
-### Analyzing the Bundle Size
+The `TextArea` component accepts the following props:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- **label** (string): The label for the text area.
+- **disabled** (boolean): Disables the text area input if set to `true`.
+- **focused** (boolean): Sets the initial focus state of the text area.
+- **errorMessage** (string): Displays an error message below the text area. If not provided, the character count will be shown instead.
+- **initialText** (string): The initial text to be displayed in the text area.
 
-### Making a Progressive Web App
+## Example
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+jsx
 
-### Advanced Configuration
+Copy code
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+`<TextArea
+  label="Comment"
+  initialText="This is an example comment."
+  disabled={false}
+  focused={true}
+  errorMessage=""
+/>`
 
-### Deployment
+This example creates a `TextArea` component with a label "Comment", an initial text value, and a focus state. The component is not disabled and does not display an error message.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Styling
 
-### `npm run build` fails to minify
+The component uses the following CSS classes:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **Base styles**: The component uses Tailwind CSS classes for padding, margins, font, and background color.
+- **Border styles**: Border color changes based on the focus state and character length.
+- **Text styles**: Text color changes based on the error state or character length.
+
+## Customization
+
+You can customize the `TextArea` component by passing different props or by modifying the underlying CSS classes to match your application's design.

@@ -25,7 +25,12 @@ function App() {
         </div>
         <div className="flex flex-col space-y-4 w-1/2">
           <TextArea label="Char limit exceeded" initialText={maxText} />
-          <TextArea label="Error focused" focused />
+          <TextArea
+            label="Error focused"
+            initialText={errorText}
+            errorMessage="This is an error message"
+            focused
+          />
         </div>
       </div>
     </div>

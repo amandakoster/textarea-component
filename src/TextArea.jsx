@@ -17,20 +17,21 @@ export function TextArea({
 
   const borderClassNames = classNames({
     "border-2": true,
-    "border-red-600": text.length > 500,
-    "border-neutral-100": text.length <= 500 && !focused,
-    "border-indigo-700": focused,
-    "focus:border-indigo-700": true,
+    "border-red-600": errorMessage || text.length > 500,
+    "border-neutral-100": (focused && errorMessage) || !focused,
+    "border-indigo-700": focused && !errorMessage && text.length <= 500,
+    "focus:border-indigo-700": focused && !errorMessage && text.length <= 500,
   });
 
   const textColorClass =
-    text.length < 500 && !errorMessage
-      ? "font-normal text-neutral-900"
-      : "font-normal text-red-600";
+    text.length > 500 || errorMessage ? "text-red-600" : "text-neutral-900";
 
-  const disabledPlaceholderClass = disabled
-    ? "placeholder:text-neutral-300"
-    : "";
+  const displayText = () => {
+    if (errorMessage) {
+      return errorMessage;
+    }
+    return `${text.length}/500`;
+  };
 
   return (
     <div className="h-[160px] w-[475px] font-noto flex flex-col gap-2 my-2">
@@ -42,7 +43,7 @@ export function TextArea({
           name="message"
           disabled={disabled}
           minLength="1"
-          className={`h-[108px] w-[475px] text-sm flex gap-2 bg-neutral-50 p-2 rounded-lg resize-none overflow-hidden ${borderClassNames} ${disabledPlaceholderClass} focus:outline-none`}
+          className={`h-[108px] w-[475px] text-sm flex gap-2 bg-neutral-50 p-2 rounded-lg resize-none overflow-hidden ${borderClassNames} focus:outline-none`}
           placeholder={disabled ? "Disabled" : "Write your message..."}
           value={text}
           onChange={(e) => setText(e.target.value)}
@@ -51,15 +52,9 @@ export function TextArea({
         />
 
         <div className="w-full flex justify-between mt-1">
-          {text.length >= 500 || errorMessage ? (
-            <span className={`text-sm ${textColorClass}`}>
-              {errorMessage || "Maximum characters are 500"}
-            </span>
-          ) : (
-            <span className={`text-sm ${textColorClass} ml-auto`}>
-              {text.length}/500
-            </span>
-          )}
+          <span className={`text-sm ${textColorClass} ml-auto`}>
+            {displayText()}
+          </span>
         </div>
       </div>
     </div>
