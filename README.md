@@ -1,7 +1,3 @@
-markdown
-
-Copy code
-
 `# TextArea Component
 
 The `TextArea` component is a customizable, controlled text area input field built using React. It includes features such as character count, error handling, focus management, and support for disabling the input.
